@@ -4,15 +4,16 @@ namespace P1
 {
     public class Division
     {
+        private int result;
         public void Excute()
         {
             Sys.Console.WriteLine("Enter The First Number: ");
-            int number1 = Convert.ToInt32(Console.ReadLine());
+            int number1 = Sys.Convert.ToInt32(Sys.Console.ReadLine());
 
             Sys.Console.WriteLine("Enter The Second Number: ");
-            int number2 = Convert.ToInt32(Console.ReadLine());
+            int number2 = Sys.Convert.ToInt32(Sys.Console.ReadLine());
 
-            int result = number1/number2;
+            result = number1 / number2;
         }
         public void Display()
         {
@@ -26,7 +27,7 @@ namespace P1
     class Program
     {
 
-        public static void Logs(Sys.Exception e, bool words)
+        public static void Logs(Sys.Exception e)
         {
                 Sys.Console.WriteLine($"Error: {e.Message}");
         }
