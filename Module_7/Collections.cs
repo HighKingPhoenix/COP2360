@@ -29,42 +29,74 @@ namespace Collections
             }
         }
 
-        public void RemoveKey(string Key)
+        public void RemoveKey(string key)
         {
-            if (wishlist.Remove(Key))
+            if (wishlist.Remove(key))
             {
-                Console.WriteLine($"{Key} is Removed");
+                Console.WriteLine($"{key} is Removed");
             }
             else
             {
-                Console.WriteLine($"{Key} is not found");
+                Console.WriteLine($"{key} is not found");
             }
         }
 
-        public void AddNew(string Key, string Value)
+        public void AddNew(string key, string Value)
         {
-            if (!wishlist.ContainsKey(Key))
+            if (!wishlist.ContainsKey(key))
             {
-                wishlist.Add(Key, Value);
-                Console.WriteLine($"{Key} has been added");
+                wishlist.Add(key, Value);
+                Console.WriteLine($"{key} has been added");
             }
             else
             {
-                Console.WriteLine($"{Key} Already Exists");
+                Console.WriteLine($"{key} Already Exists");
             }
         }
-    }
 
-
-    class Program
-    {
-        public static void Logs(Sys.Exception e)
+        public void AppendValue(string key, String appendedValue)
         {
-                Sys.Console.WriteLine($"Error: {e.Message}");
+            if (wishlist.TryGetValue(key, out string existingValue))
+            {
+                wishlist[key] = $"{existingValue} , {appendedValue}";
+                Console.WriteLine($"{key} Value Updated");
+            }
+            else
+            {
+                Console.WriteLine($"{key} Not Found in Wish List");
+
+            }
         }
-        static void Main(string [] args)
+
+        public void DisplaySorted()
         {
+            /*var sortedKeys = wishlist.Keys.ToList();
+            sortedKeys.Sort();
+
+            foreach (var key in sortedKeys)
+            {
+                Console.WriteLine($"{key}: {wishlist[key]}");
+            }*/
+
+            
+            foreach (var keyValue in wishlist.OrderBy(x => x.Key))
+            {
+                Console.WriteLine($"{keyValue.Key}: {keyValue.Value}");
+            }
             
         }
     }
-}
+
+
+        class Program
+        {
+            public static void Logs(Sys.Exception e)
+            {
+                Sys.Console.WriteLine($"Error: {e.Message}");
+            }
+            static void Main(string[] args)
+            {
+
+            }
+        }
+    }
