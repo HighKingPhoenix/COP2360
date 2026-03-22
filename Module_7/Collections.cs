@@ -116,7 +116,40 @@ namespace Collections
 
                 switch (choice)
                 {
-                    
+                    case "a":
+                        manage.Populate();
+                        break;
+                    case "b":
+                        manage.Display();
+                        break;
+                    case "c":
+                        Console.Write("Enter Name of the person whos wish list you want to remove: ");
+                        manage.RemoveKey(Console.ReadLine());
+                        break;
+                    case "d":
+                        Console.Write("Name: ");
+                        string person = Console.ReadLine();
+                        Console.Write("Wish: ");
+                        string wish = Console.ReadLine();
+                        manage.AddNew(person,wish);
+                        break;
+                    case "e":
+                        Console.Write("Name: ");
+                        string person = Console.ReadLine();
+                        Console.Write("Aditional Wish: ");
+                        string wish = Console.ReadLine();
+                        manage.AppendValue(person,wish);
+                        break;
+                    case "f":
+                        manage.DisplaySorted();
+                        break;
+                    case "q":
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Ivalid Choice");
+                        break;
+
                 }
             }
 
