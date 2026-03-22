@@ -8,6 +8,7 @@ namespace Collections
     {
         private Dictionary<string, string> wishlist = new Dictionary<string, string>();
 
+        //Create Default Dictionary
         public void Populate()
         {
             wishlist["David"] = "ROG Ally";
@@ -15,6 +16,7 @@ namespace Collections
             wishlist["Claire"] = "Audi R7";
         }
 
+        //Display Contents of the Dictionary
         public void Display()
         {
             if (wishlist.Count == 0)
@@ -29,6 +31,7 @@ namespace Collections
             }
         }
 
+        //Remove a Key from Dictionary
         public void RemoveKey(string key)
         {
             if (wishlist.Remove(key))
@@ -41,6 +44,7 @@ namespace Collections
             }
         }
 
+        //Add New Key and Value to the Dictionary
         public void AddNew(string key, string Value)
         {
             if (!wishlist.ContainsKey(key))
@@ -54,6 +58,7 @@ namespace Collections
             }
         }
 
+        //Append value to to existing key after checking if key exisit
         public void AppendValue(string key, String appendedValue)
         {
             if (wishlist.TryGetValue(key, out string existingValue))
@@ -68,6 +73,7 @@ namespace Collections
             }
         }
 
+        //Sort by Keys in Dictionary by Alphabetical Order
         public void DisplaySorted()
         {
             /*var sortedKeys = wishlist.Keys.ToList();
@@ -90,6 +96,7 @@ namespace Collections
 
     class Program
     {
+        //Outputs Error from Try Catch
         public static void Logs(Exception e)
         {
             Console.WriteLine($"Error: {e.Message}");
@@ -98,7 +105,7 @@ namespace Collections
         {
             DictionaryManager manage = new DictionaryManager();
             bool running = true;
-
+            //As long as running is True Application will keep Running until user tell it to quit
             while (running)
             {
                 Console.WriteLine("""
@@ -112,6 +119,7 @@ namespace Collections
                 (q) Quit
                 """);
 
+                Console.WriteLine("Choice: ");
                 string choice = Console.ReadLine().ToLower();
 
                 switch (choice)
@@ -123,22 +131,77 @@ namespace Collections
                         manage.Display();
                         break;
                     case "c":
-                        Console.Write("Enter Name of the person whos wish list you want to remove: ");
-                        manage.RemoveKey(Console.ReadLine());
+                        try
+                        {
+                            Console.Write("Enter Name of the person whos wish list you want to remove: ");
+                            string nRemove = Console.ReadLine();
+                            //Checks if user input is not Empty or Null
+                            if (string.IsNullOrEmpty(nRemove))
+                            {
+                                throw new Exception("Name Cannot Be Blank");
+                            }
+                            //Checks if user input is not a number
+                            else if (nRemove.Any(char.IsDigit))
+                            {
+                                throw new Exception("Name Cannot Contain Numbers");
+                            }
+                            manage.RemoveKey(nRemove);  
+                        }
+                        catch (Exception ex)
+                        {
+                            Logs(ex);
+                        }
+                        
                         break;
                     case "d":
-                        Console.Write("Name: ");
-                        string person = Console.ReadLine();
-                        Console.Write("Wish: ");
-                        string wish = Console.ReadLine();
-                        manage.AddNew(person,wish);
+                        try
+                        {
+                            Console.Write("Name: ");
+                            string n = Console.ReadLine();
+                            //Checks if user input is not Empty or Null
+                            if (string.IsNullOrEmpty(n))
+                            {
+                                throw new Exception("Name Cannot Be Blank");
+                            }
+                            //Checks if user input is not a number
+                            else if (n.Any(char.IsDigit))
+                            {
+                                throw new Exception("Name Cannot Contain Numbers");
+                            }
+                            Console.Write("Wish: ");
+                            string w = Console.ReadLine();
+                            manage.AddNew(n,w);  
+                        }
+                        catch (Exception ex)
+                        {
+                            Logs(ex);
+                        }
+                        
                         break;
                     case "e":
-                        Console.Write("Name: ");
-                        string person = Console.ReadLine();
-                        Console.Write("Aditional Wish: ");
-                        string wish = Console.ReadLine();
-                        manage.AppendValue(person,wish);
+                        try
+                        {
+                            Console.Write("Name: ");
+                            string person = Console.ReadLine();
+                            //Checks if user input is not Empty or Null
+                            if (string.IsNullOrEmpty(person))
+                            {
+                                throw new Exception("Name Cannot Be Blank");
+                            }
+                            //Checks if user input is not a number
+                            else if (person.Any(char.IsDigit))
+                            {
+                                throw new Exception("Name Cannot Contain Numbers");
+                            }
+                            Console.Write("Aditional Wish: ");
+                            string wish = Console.ReadLine();
+                            manage.AppendValue(person,wish);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logs(ex);
+                        }
+                        
                         break;
                     case "f":
                         manage.DisplaySorted();
