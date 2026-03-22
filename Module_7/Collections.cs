@@ -90,9 +90,9 @@ namespace Collections
 
     class Program
     {
-        public static void Logs(Sys.Exception e)
+        public static void Logs(Exception e)
         {
-            Sys.Console.WriteLine($"Error: {e.Message}");
+            Console.WriteLine($"Error: {e.Message}");
         }
         static void Main(string[] args)
         {
