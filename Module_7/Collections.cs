@@ -78,25 +78,48 @@ namespace Collections
                 Console.WriteLine($"{key}: {wishlist[key]}");
             }*/
 
-            
+
             foreach (var keyValue in wishlist.OrderBy(x => x.Key))
             {
                 Console.WriteLine($"{keyValue.Key}: {keyValue.Value}");
             }
-            
+
         }
     }
 
 
-        class Program
+    class Program
+    {
+        public static void Logs(Sys.Exception e)
         {
-            public static void Logs(Sys.Exception e)
-            {
-                Sys.Console.WriteLine($"Error: {e.Message}");
-            }
-            static void Main(string[] args)
-            {
+            Sys.Console.WriteLine($"Error: {e.Message}");
+        }
+        static void Main(string[] args)
+        {
+            DictionaryManager manage = new DictionaryManager();
+            bool running = true;
 
+            while (running)
+            {
+                Console.WriteLine("""
+                Choices:
+                (a) Create Default Dictionary
+                (b) Display Dictionary
+                (c) Remove a Key from Dictionary
+                (d) Add New Key to Dictionary
+                (e) Append Value to Key
+                (f) Sort by Keys in Dictionary
+                (q) Quit
+                """);
+
+                string choice = Console.ReadLine().ToLower();
+
+                switch (choice)
+                {
+                    
+                }
             }
+
         }
     }
+}
