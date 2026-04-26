@@ -87,8 +87,8 @@ namespace Final
 
         public float CalculatePay()
         {
-            TimeSpan nightStart = new TimeSpan(18, 0, 0);  // 6:00 PM
-            TimeSpan nightEnd = new TimeSpan(6, 0, 0);     // 6:00 AM
+            TimeSpan nightStart = new TimeSpan(18, 0, 0);  
+            TimeSpan nightEnd = new TimeSpan(6, 0, 0);     
 
             double dayHours = 0;
             double nightHours = 0;
@@ -137,10 +137,10 @@ namespace Final
                     Console.Write("Start Date (yyyy-mm-dd): ");
                     DateTime startDate = DateTime.Parse(Console.ReadLine());
 
-                    Console.Write("Enter shift start time (HH:MM): ");
+                    Console.Write("Enter shift start time (HH:MM - Military Time): ");
                     TimeSpan shiftStart = TimeSpan.Parse(Console.ReadLine());
 
-                    Console.Write("Enter shift end time (HH:MM): ");
+                    Console.Write("Enter shift end time (HH:MM - Military Time): ");
                     TimeSpan shiftEnd = TimeSpan.Parse(Console.ReadLine());
 
                     Console.Write("Enter hourly pay rate: ");

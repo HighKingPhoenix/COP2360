@@ -110,7 +110,7 @@ namespace Final
                     double hours = double.Parse(Console.ReadLine());
 
                     Subcontractor sub = new Subcontractor(name, number, startDate, shift, hourlyPayRate);
-                    float totalpay = sub.CalculatePay(hours);
+                    float totalPay = sub.CalculatePay(hours);
 
                     Console.WriteLine($"\nSubcontractor Summary");
                     Console.WriteLine($"Name: {sub.GetName()}");
